@@ -41,16 +41,45 @@ button {
     cursor: pointer;
 }
 
-section .chocolates{
-    display: none;
+#item-list {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-section .sour{
-    display: none;
+#item-list ul {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+    padding: 0;
 }
 
-section .mexican {
-    display: none;
+#item-list li {
+	cursor: pointer;
+	margin-right: 20px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+img {
+    max-width: 160px;
+    height: auto;
+}
+
+#shopping-cart {
+	min-height: 100vh;
+	text-align: center;
+}
+
+#shopping-cart ul {
+	list-style: none;
+	padding: 0;
+}
+
+#shopping-cart li {
+	color: palevioletred;
+    font-size: 20px;
+    font-weight: bold;
+	margin-bottom: 16px;
 }
 
 

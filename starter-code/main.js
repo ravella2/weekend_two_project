@@ -1,88 +1,136 @@
+
+//make array of different products, which has them as objects and its properties include the image to populate and the name of the product
+
 var chocolateItems = [
   {
-      img: "starter-code/images/chocolate/ferrero.jpg",
+      img: "../starter-code/images/chocolate/ferrero.jpg",
       name: "Ferrero"
   },
   { 
-      img: "starter-code/images/chocolate/hersheys.jpeg",
+      img: "../starter-code/images/chocolate/hersheys.jpeg",
       name: "Hershey's"
   },
   {
-      img: "starter-code/images/chocolate/japanese-kit-kat.jpg",
+      img: "../starter-code/images/chocolate/japanese-kit-kat.jpg",
       name: "Kit-Kat"
   },
   {
-      img: "starter-code/images/chocolate/mms.jpeg",
+      img: "../starter-code/images/chocolate/mms.jpeg",
       name: "M&M's"
   },
   {
-      img: "starter-code/images/chocolate/snickers.jpg",
+      img: "../starter-code/images/chocolate/snickers.jpg",
       name: "Snickers"
   }
 ]
 
 var sourCandy = [
   {
-      img: "starter-code/images/sour/gummy-worms.jpg",
+      img: "../starter-code/images/sour/gummy-worms.jpg",
       name: "Gummy Worms"
   },
   {
-      img: "starter-code/images/sour/hi-chew.jpeg",
+      img: "../starter-code/images/sour/hi-chew.jpeg",
       name: "Hi-Chew",
   },
   {
-      img: "starter-code/images/sour/skittles.png",
+      img: "../starter-code/images/sour/skittles.png",
       name: "Skittles"
   },
   {
-      img: "starter-code/images/sour/sour-patch.jpeg",
+      img: "../starter-code/images/sour/sour-patch.jpeg",
       name: "Sour patch"
   },
   {
-      img: "starter-code/images/sour/warheads.png",
+      img: "../starter-code/images/sour/warheads.png",
       name: "Warheads"
   }
 ]
 
 var mexCandy = [
   {
-      img: "starter-code/images/mexican-candy/duvalin.jpg",
+      img: "../starter-code/images/mexican-candy/duvalin.jpg",
       name: "Duvalin"
   },
   {
-      img: "starter-code/images/mexican-candy/lucas.jpeg",
+      img: "../starter-code/images/mexican-candy/lucas.jpeg",
       name: "Mango Lucas"
   },
   {
-      img: "starter-code/images/mexican-candy/mango-pop.jpg",
+      img: "../starter-code/images/mexican-candy/mango-pop.jpg",
       name: "Mango Lollipop"
   },
   {
-      img: "starter-code/images/mexican-candy/mazapan.jpg",
+      img: "../starter-code/images/mexican-candy/mazapan.jpg",
       name: "Mazapan"
   },
   {
-      img: "starter-code/images/mexican-candy/pulparindo.jpeg",
+      img: "../starter-code/images/mexican-candy/pulparindo.jpeg",
       name: "Pulparindo"
   }
 ]
 
+//creates a click where 
 
-var chocolateGallery = function() {
-  var newList = ("<ul>");
+$('#chocolate').click(function() {
+  addShoppingItems('chocolate');
+});
 
-  for(var i = 0; i < chocolateItems.length; i++) {
-    var currentItem = chocolateItems[i];
+$('#sour-candy').click(function() {
+  addShoppingItems('sour-candy');
+});
 
-    newList.append(
-        `<li class="item-list">
-          <img src="${currentItem.img}">
-          <p> ${currentItem.name}</p>
-        </li>
-        </ul>`);
-  }
+$('#mex-candy').click(function() {
+  addShoppingItems('mex-candy');
+});
 
-  ('#item-list').append(newList);
+
+$('#item-list').on('click', '.shopping-item', function() {
+  var itemName = $(this).find('p').text();
+  addItemToShoppingCart(itemName);
+});
+
+
+function addShoppingItems(category) {
+
+clearShoppingItems();
+
+var myItems;
+switch(category) {
+  case 'chocolate':
+    myItems = chocolateItems;
+    break;
+  case 'sour-candy':
+    myItems = sourCandy;
+    break
+  case 'mex-candy':
+    myItems = mexCandy;
+    break
+  default:
 }
 
-document.getElementById('chocolate').addEventListener('click', chocolateGallery);
+var newList = $('<ul>');
+for(var i = 0; i < myItems.length; i++) {
+  var currentItem = myItems[i];
+
+  newList.append(
+    `<li class="shopping-item">
+        <img src="${currentItem.img}">
+        <p>${currentItem.name}</p>
+    </li>`);
+}
+
+$('#item-list').append(newList);
+}
+
+function clearShoppingItems() {
+$('#item-list').empty();
+}
+
+function addItemToShoppingCart(item) {
+$('#shopping-cart ul').append(`
+  <li>
+      ${item}
+  </li>
+`);
+}

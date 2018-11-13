@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+.container {
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "quicksand";
+    background-color: #C3EEFF;
+
+}
+
+header {
+    background-image: url(images/sweets.jpg);
+}
+
+h1 {
+    margin: 75px;
+    text-align: center;
+    font-size: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    margin: 15px;
+    text-decoration: underline;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+}
+
+section .chocolates{
+    display: none;
+}
+
+section .sour{
+    display: none;
+}
+
+section .mexican {
+    display: none;
+}
+
+
+
